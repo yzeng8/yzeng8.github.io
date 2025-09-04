@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ryan Zeng · Portfolio</title>
+  <meta name="description" content="Data Engineering · Spark · AWS · Distributed Systems" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --panel: #111319;
+      --text: #e6e6e6;
+      --muted: #a7aab0;
+      --brand: #7c5cff;
+      --brand-2: #00d4ff;
+      --card: #151826;
+      --border: #222633;
+      --link: #8bd3ff;
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+      --radius-lg: 18px;
+      --radius-sm: 12px;
+      --maxw: 1120px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg:#f8fafc; --panel:#ffffff; --text:#0f172a; --muted:#475569; --card:#ffffff; --border:#e2e8f0; --link:#0ea5e9; --shadow:0 8px 20px rgba(2,6,23,.08); }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--text); background: radial-gradient(1200px 600px at 30% -10%, rgba(124,92,255,.25), transparent 40%), radial-gradient(1000px 500px at 90% 10%, rgba(0,212,255,.25), transparent 40%), var(--bg); }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 28px 18px 72px; }
+    header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 14px; background: color-mix(in oklab, var(--panel) 75%, transparent); border:1px solid var(--border); border-radius: var(--radius-lg); position: sticky; top: 14px; backdrop-filter: blur(10px); box-shadow: var(--shadow); z-index: 5; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.4px; }
+    .logo { width:36px; height:36px; border-radius:10px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display:grid; place-items:center; color:#fff; font-weight:800; }
+    nav { display:flex; flex-wrap:wrap; gap:10px; }
+    nav a { padding:8px 12px; border:1px solid var(--border); border-radius: 999px; }
+    .hero { display:grid; grid-template-columns: 1.2fr .8fr; gap:24px; margin-top:28px; }
+    .card { background: var(--card); border:1px solid var(--border); border-radius: var(--radius-lg); padding:28px; box-shadow: var(--shadow); }
+    .title { font-size: clamp(28px, 3.5vw, 44px); line-height:1.1; margin:0 0 10px; }
+    .subtitle { color:var(--muted); font-size: clamp(14px, 2vw, 18px); }
+    .tags { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+    .tag { padding:8px 12px; background: rgba(124,92,255,.12); border:1px solid color-mix(in oklab, var(--brand) 50%, var(--border)); color:#c8beff; border-radius:999px; font-size:13px; }
+    @media (prefers-color-scheme: light){ .tag{ color:#5b43e6; background: rgba(124,92,255,.1);} }
+    .cta { display:flex; gap:12px; margin-top:20px; }
+    .btn { display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid var(--border); font-weight:600; }
+    .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b0c10; border:none; }
+    .panel { display:grid; gap:18px; }
+    .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; }
+    .project { padding:20px; }
+    .project h3 { margin:0 0 6px; font-size:18px; }
+    .project p { margin:0; color:var(--muted); font-size:14px; }
+    .kpis { display:grid; grid-template-columns: repeat(4, 1fr); gap:16px; margin-top:10px; }
+    .kpi { text-align:center; padding:16px; border-radius:12px; border:1px dashed var(--border); background: color-mix(in oklab, var(--card) 90%, transparent); }
+    .kpi b { display:block; font-size:22px; }
+    section { margin-top:28px; }
+    .section-title { margin:0 0 12px; font-size:20px; letter-spacing:.25px; }
+    footer { margin-top:40px; text-align:center; color:var(--muted); padding:22px 0 0; }
+    .chip { display:inline-block; padding:6px 10px; background: color-mix(in oklab, var(--panel) 85%, transparent); border:1px solid var(--border); border-radius: 999px; font-size:12px; margin:4px 6px 0 0; }
+    .flex { display:flex; gap:16px; flex-wrap:wrap; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    @media (max-width: 900px){ .hero{ grid-template-columns: 1fr; } .grid{ grid-template-columns: 1fr; } .kpis{ grid-template-columns: repeat(2, 1fr);} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">RZ</div>
+        <span>Ryan Zeng</span>
+      </div>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <section class="card">
+        <h1 class="title">Data Engineer & Distributed Systems Enthusiast</h1>
+        <p class="subtitle">I build reliable data pipelines (Spark on AWS Glue, Redshift, Iceberg) and chase performance wins. Currently MEng @ UofT · DE Intern @ Amazon.</p>
+        <div class="tags">
+          <span class="tag">Spark</span>
+          <span class="tag">AWS Glue</span>
+          <span class="tag">Redshift</span>
+          <span class="tag">Iceberg</span>
+          <span class="tag">Observability</span>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="mailto:ryan@example.com">Email Me</a>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><b>3×</b>Faster Spark jobs</div>
+          <div class="kpi"><b>TB-scale</b> Pipelines</div>
+          <div class="kpi"><b>Zero-ETL</b> Designs</div>
+          <div class="kpi"><b>Obs.</b> DataFlint, Spark UI</div>
+        </div>
+      </section>
+      <aside class="panel">
+        <div class="card">
+          <h2 class="section-title">Quick Links</h2>
+          <div class="flex">
+            <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="btn" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn" href="#" id="dl-resume">Download Résumé (PDF)</a>
+          </div>
+          <p class="subtitle" style="margin-top:10px">Replace links with your own. The résumé button will generate a printable PDF from this page.</p>
+        </div>
+        <div class="card">
+          <h2 class="section-title">Tech Stack</h2>
+          <div>
+            <span class="chip">Python</span>
+            <span class="chip">PySpark</span>
+            <span class="chip">AWS Glue</span>
+            <span class="chip">Athena</span>
+            <span class="chip">Redshift</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Airflow</span>
+            <span class="chip">GitHub Actions</span>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <section id="projects" class="card">
+      <h2 class="section-title">Selected Projects</h2>
+      <div class="grid">
+        <article class="project">
+          <h3>Near‑Real‑Time Shipping Analytics</h3>
+          <p>Glue + Spark + Iceberg. Tuned joins, mitigated skew, and shipped observability via Spark UI & DataFlint.</p>
+          <p class="mono">Spark AQE · Broadcast/SMJ · Skew handling · S3 event logs</p>
+        </article>
+        <article class="project">
+          <h3>RL: FrozenLake DP Suite</h3>
+          <p>Clean implementations of policy/value iteration with intuitive visualizers.</p>
+          <p class="mono">Python · NumPy · Gymnasium</p>
+        </article>
+        <article class="project">
+          <h3>Dr. Elephant on Glue Logs (PoC)</h3>
+          <p>Pipeline to export Spark event logs to S3 and analyze bottlenecks with an external UI.</p>
+          <p class="mono">Glue Studio · S3 · EC2 · Docker</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience" class="card">
+      <h2 class="section-title">Experience</h2>
+      <ul>
+        <li><b>Amazon · Data Engineering Intern</b> — Shipetech | 2025 — Present</li>
+        <li><b>University of Toronto</b> — MEng ECE (Distributed Systems & ML)</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="card">
+      <h2 class="section-title">Contact</h2>
+      <p>Best way to reach me is by email. You can also open an issue on my GitHub portfolio repo for feedback.</p>
+      <p><a href="mailto:ryan@example.com">ryan@example.com</a></p>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> Ryan Zeng · Built with GitHub Pages</p>
+    </footer>
+  </div>
+
+  <script>
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // One-click "PDF" (prints nicely)
+    document.getElementById('dl-resume').addEventListener('click', (e) => { e.preventDefault(); window.print(); });
+  </script>
+</body>
+</html>
+
